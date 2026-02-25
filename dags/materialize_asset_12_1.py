@@ -6,13 +6,13 @@ from materialize_asset_12_0 import stage0_source_data
 # Stage 1: Read Data
 @asset(
     schedule=stage0_source_data,
-    uri='opt/airflow/logs/data/stage1_raw_data.txt',
+    uri='/opt/airflow/logs/data/stage1_raw_data.txt',
     name='stage1_read_data'
 )
 def stage1_read_data():
     """Stage 1: Read and validate data from Stage 0 source"""
-    source_uri = 'opt/airflow/logs/data/source_data.txt'
-    target_uri = 'opt/airflow/logs/data/stage1_raw_data.txt'
+    source_uri = '/opt/airflow/logs/data/source_data.txt'
+    target_uri = '/opt/airflow/logs/data/stage1_raw_data.txt'
     
     # Ensure the directory exists
     os.makedirs(os.path.dirname(target_uri), exist_ok=True)

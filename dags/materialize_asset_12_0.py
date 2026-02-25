@@ -5,12 +5,12 @@ import csv
 
 @asset(
     schedule="@daily",
-    uri='opt/airflow/logs/data/source_data.txt',
+    uri='/opt/airflow/logs/data/source_data.txt',
     name='stage0_source_data'
 )
 def stage0_source_data():
     """Stage 0: Source data"""
-    uri = 'opt/airflow/logs/data/source_data.txt'
+    uri = '/opt/airflow/logs/data/source_data.txt'
     os.makedirs(os.path.dirname(uri), exist_ok=True)
     
     # Simulate data extraction logic here

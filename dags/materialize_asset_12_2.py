@@ -7,13 +7,13 @@ from materialize_asset_12_1 import stage1_read_data
 # Stage 2: Deduplication
 @asset(
     schedule=stage1_read_data,  # Depends on stage1_read_data upstream
-    uri='opt/airflow/logs/data/stage2_deduplicated_data.txt',
+    uri='/opt/airflow/logs/data/stage2_deduplicated_data.txt',
     name='stage2_deduplicate_data'
 )
 def stage2_deduplicate_data():
     """Stage 2: Remove duplicate records from raw data"""
-    source_uri = 'opt/airflow/logs/data/stage1_raw_data.txt'
-    target_uri = 'opt/airflow/logs/data/stage2_deduplicated_data.txt'
+    source_uri = '/opt/airflow/logs/data/stage1_raw_data.txt'
+    target_uri = '/opt/airflow/logs/data/stage2_deduplicated_data.txt'
     
     # Ensure the directory exists
     os.makedirs(os.path.dirname(target_uri), exist_ok=True)
