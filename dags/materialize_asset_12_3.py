@@ -8,14 +8,14 @@ from materialize_asset_12_2 import stage2_deduplicate_data
 # Stage 3: Load to Target
 @asset(
     schedule=stage2_deduplicate_data,  # Depends on stage2_deduplicate_data upstream
-    uri='opt/airflow/logs/data/stage3_target_loaded.txt',
+    uri='/opt/airflow/logs/data/stage3_target_loaded.txt',
     name='stage3_load_to_target'
 )
 def stage3_load_to_target():
     """Stage 3: Load deduplicated data to target storage"""
-    source_uri = 'opt/airflow/logs/data/stage2_deduplicated_data.txt'
-    target_uri = 'opt/airflow/logs/data/stage3_target_loaded.txt'
-    target_backup = 'opt/airflow/logs/data/target_backup.txt'
+    source_uri = '/opt/airflow/logs/data/stage2_deduplicated_data.txt'
+    target_uri = '/opt/airflow/logs/data/stage3_target_loaded.txt'
+    target_backup = '/opt/airflow/logs/data/target_backup.txt'
     
     # Ensure the directory exists
     os.makedirs(os.path.dirname(target_uri), exist_ok=True)
@@ -38,7 +38,7 @@ def stage3_load_to_target():
             record_count += 1
     
     # Create a summary report
-    summary_file = 'opt/airflow/logs/data/load_summary.txt'
+    summary_file = '/opt/airflow/logs/data/load_summary.txt'
     os.makedirs(os.path.dirname(summary_file), exist_ok=True)
     
     with open(summary_file, 'w') as f:

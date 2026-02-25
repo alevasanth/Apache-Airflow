@@ -7,7 +7,7 @@ import pendulum
 @asset(
     schedule="@daily",
     # This is the path where the output of the asset will be stored. It can be a local path or a remote storage path and OPTIONAL yet Good Practice (like S3, GCS, etc.)
-    uri = 'opt/airflow/logs/data/data_extract.txt',
+    uri = '/opt/airflow/logs/data/data_extract.txt',
     name = 'data_extract'
 )
 def data_extract(self):
